@@ -1,3 +1,4 @@
+
 # ♻️ Smart Waste Management System
 
 A smart, IoT-enabled waste monitoring and forecasting system designed to improve urban cleanliness by automating waste level detection, optimizing collection routes, and predicting future waste patterns using machine learning.
@@ -47,8 +48,12 @@ Feel free to reach out for questions, collaborations, or feedback!
 
 🌐(https://www.linkedin.com/in/izhar-jamali-910ba7198)
 
+
+
 🎥 Demo Video
 https://youtu.be/p2CYMQoJfwo
+
+
 
 🙌 Acknowledgements
 
