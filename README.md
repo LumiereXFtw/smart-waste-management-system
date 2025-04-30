@@ -38,15 +38,14 @@ Traditional waste management systems often rely on manual checks and fixed colle
 | **Mobile App**| React Native                                  |
 | **Database** | Firebase / MongoDB                             |
 | **ML Tools** | Python (NumPy, Pandas, scikit-learn)           |
-| **Hosting**  | AWS / GitHub Pages                             |
 | **Others**   | LoRa/Wi-Fi, Solar Panel, Lithium-ion Battery   |
 
-👥 Team Members
+📫 Contact
+Feel free to reach out for questions, collaborations, or feedback!
 
-  Name	         Role	                      Contact
-Izhar Jamali	Backend & ML Developer	izharjamali99@gmail.com
-Izhar Jamali	IoT & Embedded Engineer	izharjamali99@gmail.com
-Izhar Jamali	Frontend & Data Analyst	izharjamali99@gmail.com
+Izhar Jamali
+📧 izharjamali99@gmail.com
+🌐(https://www.linkedin.com/in/izhar-jamali-910ba7198)
 
 
 🙌 Acknowledgements
