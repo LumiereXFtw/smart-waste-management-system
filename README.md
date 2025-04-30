@@ -44,7 +44,9 @@ Traditional waste management systems often rely on manual checks and fixed colle
 Feel free to reach out for questions, collaborations, or feedback!
 
 Izhar Jamali
+
 📧 izharjamali99@gmail.com
+
 🌐(https://www.linkedin.com/in/izhar-jamali-910ba7198)
 
 
