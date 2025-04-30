@@ -40,3 +40,21 @@ Traditional waste management systems often rely on manual checks and fixed colle
 | **ML Tools** | Python (NumPy, Pandas, scikit-learn)           |
 | **Hosting**  | AWS / GitHub Pages                             |
 | **Others**   | LoRa/Wi-Fi, Solar Panel, Lithium-ion Battery   |
+
+👥 Team Members
+
+  Name	         Role	                      Contact
+Izhar Jamali	Backend & ML Developer	izharjamali99@gmail.com
+Izhar Jamali	IoT & Embedded Engineer	izharjamali99@gmail.com
+Izhar Jamali	Frontend & Data Analyst	izharjamali99@gmail.com
+
+
+🙌 Acknowledgements
+SZABIST Hyderabad Faculty for guidance
+
+Open-source libraries and contributors
+
+Firebase & Chart.js Documentation
+
+Community examples of smart city projects
+
