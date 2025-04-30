@@ -1,0 +1,69 @@
+graphhopper:
+  # Define the path to your OpenStreetMap PBF file (adjust the path accordingly)
+  datareader.file: "C:/Users/Admin/Desktop/smartwasteFYP/pakistan-latest.osm.pbf"
+
+  # GraphHopper will store the graph data in this folder
+  graph.location: graph-cache
+
+  ##### Routing Profiles ####
+  profiles:
+    - name: car
+      custom_model_files: [car.json]  # Add your custom profile model here
+  # Removed bicycle and foot profiles
+
+  # Enable Contraction Hierarchies for faster routing
+  profiles_ch:
+    - profile: car
+  # Removed bicycle and foot profiles from the contraction hierarchies section
+
+  #### Encoded Values ####
+  graph.encoded_values: car_access, car_average_speed, surface, max_speed
+
+  #### Speed Mode ####
+  # For optimized performance, enable the Contraction Hierarchies preparation
+  prepare.ch.threads: 4   # Adjust based on available system RAM
+  prepare.lm.threads: 2   # Use landmarks for flexible mode
+  prepare.lm.landmarks: 16
+
+  #### Elevation Data ####
+  # Uncomment to enable elevation data (if available and needed for routing)
+  # graph.elevation.provider: srtm
+  # graph.elevation.cache_dir: ./srtmprovider/
+  # graph.elevation.dataaccess: RAM_STORE
+  # graph.elevation.interpolate: bilinear
+
+  #### Country-specific Settings ####
+  # Enable country-specific default max speeds if your routing needs it
+  # max_speed_calculator.enabled: true
+
+  #### OSM Import Settings ####
+  import.osm.ignored_highways: footway, cycleway, path, pedestrian  # Exclude non-motorized roads for car routing
+  graph.dataaccess.default_type: RAM_STORE   # Optimal for modern machines
+  datareader.preferred_language: en   # Set language for OSM tags
+
+  #### Logging ####
+  logging:
+    appenders:
+      - type: file
+        time_zone: UTC
+        current_log_filename: logs/graphhopper.log
+        log_format: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+        archive: true
+        archived_log_filename_pattern: ./logs/graphhopper-%d.log.gz
+        archived_file_count: 30
+        never_block: true
+      - type: console
+        time_zone: UTC
+        log_format: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+  #### Server Configuration ####
+  server:
+    application_connectors:
+      - type: http
+        port: 8989
+        bind_host: localhost
+        max_request_header_size: 50k
+    admin_connectors:
+      - type: http
+        port: 8990
+        bind_host: localhost
