@@ -47,6 +47,9 @@ Feel free to reach out for questions, collaborations, or feedback!
 
 🌐(https://www.linkedin.com/in/izhar-jamali-910ba7198)
 
+### 🎥 Demo Video
+
+[▶️ Watch Video](demonstration.mp4)
 
 
 🙌 Acknowledgements
