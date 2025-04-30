@@ -47,9 +47,11 @@ Feel free to reach out for questions, collaborations, or feedback!
 
 🌐(https://www.linkedin.com/in/izhar-jamali-910ba7198)
 
-### 🎥 Demo Video
+<video width="600" controls>
+  <source src="demonstration.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-[▶️ Watch Video](demonstration.mp4)
 
 
 🙌 Acknowledgements
