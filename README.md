@@ -50,7 +50,6 @@ Feel free to reach out for questions, collaborations, or feedback!
 🎥 Demo Video
 https://youtu.be/p2CYMQoJfwo
 
-
 🙌 Acknowledgements
 
 SZABIST Hyderabad Faculty for guidance
