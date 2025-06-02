@@ -35,7 +35,7 @@ Traditional waste management systems often rely on manual checks and fixed colle
 |--------------|-----------------------------------------------|
 | **IoT Layer**| NodeMCU ESP8266, HC-SR04 Ultrasonic Sensor     |
 | **Backend**  | Flask / Node.js (REST API)                     |
-| **Frontend** | React.js, Chart.js                             |
+| **Frontend** | HTML,Css,javascript, Chart.js                             |
 | **Mobile App**| Flutter                                       |
 | **Database** | Firebase                                       |
 | **ML Tools** | Python (NumPy, Pandas, scikit-learn)           |
