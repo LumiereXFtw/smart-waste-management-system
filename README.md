@@ -23,7 +23,7 @@ Traditional waste management systems often rely on manual checks and fixed colle
 ✅ Interactive data dashboard (web)  
 ✅ Machine Learning-based waste prediction  
 ✅ Collection route optimization  
-✅ Mobile app for field usage  
+✅ Mobile app for field usage (In Progress)  
 ✅ Firebase integration for real-time data  
 ✅ Solar-powered IoT setup for sustainability
 
@@ -35,8 +35,8 @@ Traditional waste management systems often rely on manual checks and fixed colle
 |--------------|-----------------------------------------------|
 | **IoT Layer**| NodeMCU ESP8266, HC-SR04 Ultrasonic Sensor     |
 | **Backend**  | Flask / Node.js (REST API)                     |
-| **Frontend** | HTML,Css,javascript, Chart.js                             |
-| **Mobile App**| Flutter                                       |
+| **Frontend** | HTML,Css,javascript, Chart.js                  |
+| **Mobile App**| Flutter (In Future)                           |
 | **Database** | Firebase                                       |
 | **ML Tools** | Python (NumPy, Pandas, scikit-learn)           |
 | **Others**   | Wi-Fi, Solar Panel, Lithium-ion Battery        |
