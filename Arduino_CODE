@@ -1,0 +1,130 @@
+#include <ESP8266WiFi.h>
+#include <FirebaseESP8266.h>
+
+// Firebase and Wi-Fi configuration
+#define FIREBASE_HOST "your-db-url.firebaseio.com"
+#define FIREBASE_API_KEY "your-api-key"
+const char* ssid = "Your_WiFi_Name";
+const char* password = "Your_WiFi_Password";
+// Firebase credentials
+const char* firebaseEmail = ""; // Replace with your Firebase email
+const char* firebasePassword = "";          // Replace with your Firebase password
+
+// Define sensor pins
+#define TRIG1 D5
+#define ECHO1 D6
+#define TRIG2 D7
+#define ECHO2 D8
+
+FirebaseData firebaseData;
+FirebaseConfig firebaseConfig;
+FirebaseAuth firebaseAuth;
+
+// Define bin location (latitude and longitude)
+float bin1Latitude = 25.365101;  // Replace with actual latitude for bin 1
+float bin1Longitude = 68.357521; // Replace with actual longitude for bin 1
+
+float bin2Latitude = 25.3961;  // Replace with actual latitude for bin 2
+float bin2Longitude = 68.3755; // Replace with actual longitude for bin 2
+
+void setup() {
+  Serial.begin(9600);
+
+  // Connect to Wi-Fi
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nConnected to Wi-Fi");
+
+  // Initialize Firebase
+  firebaseConfig.host = FIREBASE_HOST;
+  firebaseConfig.api_key = FIREBASE_API_KEY;
+
+  // Set email and password for authentication
+  firebaseAuth.user.email = firebaseEmail;
+  firebaseAuth.user.password = firebasePassword;
+
+  // Begin Firebase with config and auth
+  Firebase.begin(&firebaseConfig, &firebaseAuth);
+  Serial.println("Firebase initialized");
+
+  // Configure sensor pins
+  pinMode(TRIG1, OUTPUT);
+  pinMode(ECHO1, INPUT);
+  pinMode(TRIG2, OUTPUT);
+  pinMode(ECHO2, INPUT);
+}
+
+void loop() {
+  // Measure distances for both sensors
+  int sensor1Distance = getDistance(TRIG1, ECHO1);
+  int sensor2Distance = getDistance(TRIG2, ECHO2);
+
+  // Validate sensor readings (minimum distance is 2 cm, maximum is 10 cm)
+  sensor1Distance = constrain(sensor1Distance, 2, 10);
+  sensor2Distance = constrain(sensor2Distance, 2, 10);
+
+  // Calculate percentage fill level (2 cm = 100%, 10 cm = 0%)
+  int sensor1Fill = map(sensor1Distance, 2, 10, 100, 0);
+  int sensor2Fill = map(sensor2Distance, 2, 10, 100, 0);
+
+  // Debug: Print sensor data
+  Serial.print("Sensor 1 Fill: ");
+  Serial.println(sensor1Fill);
+  Serial.print("Sensor 2 Fill: ");
+  Serial.println(sensor2Fill);
+
+  // Send data to Firebase
+  if (Firebase.setInt(firebaseData, "/bins/bin1/fill", sensor1Fill)) {
+    Serial.println("Bin 1 fill data sent: " + String(sensor1Fill) + "%");
+  } else {
+    Serial.println("Failed to send Bin 1 fill data: " + firebaseData.errorReason());
+  }
+
+  if (Firebase.setInt(firebaseData, "/bins/bin2/fill", sensor2Fill)) {
+    Serial.println("Bin 2 fill data sent: " + String(sensor2Fill) + "%");
+  } else {
+    Serial.println("Failed to send Bin 2 fill data: " + firebaseData.errorReason());
+  }
+
+  // Send bin locations (latitude and longitude) to Firebase
+  if (Firebase.setFloat(firebaseData, "/bins/bin1/latitude", bin1Latitude)) {
+    Serial.println("Bin 1 latitude sent: " + String(bin1Latitude));
+  } else {
+    Serial.println("Failed to send Bin 1 latitude: " + firebaseData.errorReason());
+  }
+
+  if (Firebase.setFloat(firebaseData, "/bins/bin1/longitude", bin1Longitude)) {
+    Serial.println("Bin 1 longitude sent: " + String(bin1Longitude));
+  } else {
+    Serial.println("Failed to send Bin 1 longitude: " + firebaseData.errorReason());
+  }
+
+  if (Firebase.setFloat(firebaseData, "/bins/bin2/latitude", bin2Latitude)) {
+    Serial.println("Bin 2 latitude sent: " + String(bin2Latitude));
+  } else {
+    Serial.println("Failed to send Bin 2 latitude: " + firebaseData.errorReason());
+  }
+
+  if (Firebase.setFloat(firebaseData, "/bins/bin2/longitude", bin2Longitude)) {
+    Serial.println("Bin 2 longitude sent: " + String(bin2Longitude));
+  } else {
+    Serial.println("Failed to send Bin 2 longitude: " + firebaseData.errorReason());
+  }
+
+  delay(5000); // Wait 5 seconds before the next update
+}
+
+// Function to measure distance using ultrasonic sensor
+int getDistance(int trigPin, int echoPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duration = pulseIn(echoPin, HIGH);
+  int distance = duration * 0.034 / 2; // Convert duration to distance in cm
+  return distance;
+}
